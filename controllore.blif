@@ -1,0 +1,46 @@
+.model CONTROLLORE
+.inputs RES_GEN RES_WM RES_DW INT_WM INT_DW OL_FLAG
+.outputs INT_GEN INT_WM INT_DW
+.latch ???
+.latch ???
+.start_kiss
+.i 6
+.o 3
+.p ???
+.s 4
+.r OFF
+0----- OFF OFF 000
+1----- OFF OK 111
+-11--0 OK OK 111
+---110 OK OK 111
+--11-0 OK OK 111
+-1--10 OK OK 111
+-10-00 OK OK 110
+--01-0 OK OK 110
+-010-0 OK OK 101
+-0-010 OK OK 101
+-00000 OK OK 100
+---1-1 OK OL4 110
+-1---1 OK OL4 110
+-0-0-1 OK OL4 100
+--11-0 OL4 OK 111
+-11--0 OL4 OK 111
+--01-0 OL4 OK 110
+-10-00 OL4 OK 110
+-010-0 OL4 OK 101
+-000-0 OL4 OK 100
+--1--1 OL4 OL5 101
+--0--1 OL4 OL5 100
+-11--0 OL5 OK 111
+-1--10 OL5 OK 111
+-10-00 OL5 OK 111
+-10-00 OL5 OK 110
+-01--0 OL5 OK 101
+-0--10 OL5 OK 101
+-00-00 OL5 OK 100
+-----1 OL5 OFF 000
+.end_kiss	
+
+# TODO: capire la cosa delle latchout
+
+.end
