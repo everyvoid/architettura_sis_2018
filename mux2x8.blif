@@ -1,0 +1,7 @@
+.model MUX2X8
+.inputs X2 X1 X0 a1 a0 b1 b0 c1 c0 d1 d0 e1 e0 f1 f0 g1 g0 h1 h0
+.outputs o1 o0
+.subckt MUX1X8 S2=X2 S1=X1 S0=X0 i7=a1 i6=b1 i5=c1 i4=d1 i3=e1 i2=f1 i1=g1 i0=h1 out=o1
+.subckt MUX1X8 S2=X2 S1=X1 S0=X0 i7=a0 i6=b0 i5=c0 i4=d0 i3=e0 i2=f0 i1=g0 i0=h0 out=o0
+.search mux1x8.blif
+.end
