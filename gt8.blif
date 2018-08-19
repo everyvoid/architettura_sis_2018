@@ -1,4 +1,4 @@
-.model 8_gt
+.model GT8
 .inputs A7 A6 A5 A4 A3 A2 A1 A0 B7 B6 B5 B4 B3 B2 B1 B0
 .outputs AgtB
 .subckt xor A=A7 B=B7 X=X7

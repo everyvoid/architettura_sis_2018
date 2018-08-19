@@ -1,4 +1,4 @@
-.model XOR
+.model xor
 .inputs A B
 .outputs X
 .names A B X

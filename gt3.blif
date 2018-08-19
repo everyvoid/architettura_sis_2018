@@ -1,4 +1,4 @@
-.model 3_gt
+.model GT3
 .inputs A2 A1 A0 B2 B1 B0
 .outputs AgtB
 .subckt xor A=A2 B=B2 X=X2
