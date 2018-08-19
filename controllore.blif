@@ -1,12 +1,12 @@
 .model CONTROLLORE
 .inputs RES_GEN RES_WM RES_DW INT_WM INT_DW OL_FLAG
 .outputs INT_GEN INT_WM INT_DW
-.latch ???
-.latch ???
+.latch 	# ???
+.latch 	# ???
 .start_kiss
 .i 6
 .o 3
-.p ???
+.p 	# ???
 .s 4
 .r OFF
 0----- OFF OFF 000
@@ -42,5 +42,4 @@
 .end_kiss	
 
 # TODO: capire la cosa delle latchout
-
 .end
