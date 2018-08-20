@@ -1,16 +1,16 @@
 .model MUX3
-.inputs A2 A1 A0 B2 B1 B0 S
+.inputs S A2 A1 A0 B2 B1 B0
 .outputs O2 O1 O0
 
-.names S A2 B2 O2
+.names S B2 A2 O2
 11- 1
 0-1 1
 
-.names S A1 B1 O1
+.names S B1 A1 O1
 11- 1
 0-1 1
 
-.names S A0 B0 O0
+.names S B0 A0 O0
 11- 1
 0-1 1
 .end
