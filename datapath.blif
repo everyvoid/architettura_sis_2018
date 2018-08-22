@@ -1,6 +1,6 @@
 .model DATAPATH
 .inputs INT_GEN INT_WM INT_DW L9 L8 L7 L6 L5 L4 L3 L2 L1 L0
-.outputs TH1 TH0 TIMER2PLUS TIMER1PLUS TIMER0PLUS
+.outputs TH1 TH0 OL_FLAG
 
 # Definizione valori 0 e 1
 .subckt ZERO O=ZERO
