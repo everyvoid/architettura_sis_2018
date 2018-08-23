@@ -1,4 +1,4 @@
-.model CONTROLLORE
+.model FSM
 .inputs RES_GEN RES_WM RES_DW OL2 OL1 OL0
 .outputs INT_GEN INT_WM INT_DW
 
