@@ -14,7 +14,7 @@
 	TH1=TH1O TH0=TH0O \
 	OL2=OL2O OL1=OL1O OL0=OL0O
 
-.search fsm.blif
-.search datapath2.blif
+.search fsm2.blif
+.search datapath.blif
 .end
 
