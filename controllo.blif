@@ -1,122 +1,143 @@
 .model FSM
 .inputs RES_GEN RES_WM RES_DW OL2 OL1 OL0
 .outputs INT_GEN INT_WM INT_DW
-.latch    [12] LatchOut_v6   0
-.latch    [13] LatchOut_v7   0
-.latch    [14] LatchOut_v8   1
+.latch    [699] LatchOut_v6   1
+.latch    [700] LatchOut_v7   1
+.latch    [701] LatchOut_v8   0
 .start_kiss
 .i 6
 .o 3
-.p 22
+.p 38
 .s 5
 .r OFF
 0----- OFF OFF 000
 1----- OFF OK 111
 ---0-- OK OK 111
----100 OK DW 110
+--1100 OK OK 111
+-1-101 OK OK 111
+1--110 OK OK 111
+--0100 OK DW 110
+-0-101 OK WM 101
+0--110 OK OFF 000
 --00-- DW DW 110
---1100 DW DW 110
---0101 DW DW_WM 100
---1101 DW WM 101
+--0100 DW DW 110
+-10101 DW DW 110
+-01101 DW WM 101
+-00101 DW DW_WM 100
 --10-- DW OK 111
--0-100 DW_WM DW_WM 100
--000-- DW_WM DW_WM 100
---0101 DW_WM DW_WM 100
--100-- DW_WM DW 110
--1-100 DW_WM DW 110
----11- DW_WM OFF 000
--110-- DW_WM OK 111
--010-- DW_WM WM 101
+--1100 DW OK 111
+-11101 DW OK 111
+1--110 DW OK 111
+0--110 DW OFF 000
 -0-0-- WM WM 101
--1-100 WM DW 110
----11- WM OFF 000
+-01100 WM WM 101
+-10100 WM DW 110
+-00100 WM DW_WM 100
 -1-0-- WM OK 111
--0-100 WM DW_WM 100
+-1-101 WM OK 111
+-11100 WM OK 111
+1--11- WM OK 111
+0--110 WM OFF 000
+-0010- DW_WM DW_WM 100
+-000-- DW_WM DW_WM 100
+-100-- DW_WM DW 110
+-1010- DW_WM DW 110
+-010-- DW_WM WM 101
+-0110- DW_WM WM 101
+0--110 DW_WM OFF 000
+-110-- DW_WM OK 111
+-1110- DW_WM OK 111
+1--110 DW_WM OK 111
 .end_kiss
 .latch_order LatchOut_v6 LatchOut_v7 LatchOut_v8
-.code OFF 001
-.code OK 110
-.code DW 100
-.code DW_WM 000
-.code WM 010
-.names RES_GEN RES_WM OL2 OL1 OL0 LatchOut_v6 LatchOut_v8 [12]
---0--1- 1
-----01- 1
-1-----1 1
--10---0 1
--1-00-0 1
-.names RES_GEN RES_DW OL2 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 [13]
---0--1- 1
-1-----1 1
--1-11-- 1
--10---0 1
-.names RES_GEN OL2 OL1 LatchOut_v8 [14]
+.code OFF 110
+.code OK 010
+.code DW 011
+.code WM 000
+.code DW_WM 001
+.names RES_GEN OL2 OL1 LatchOut_v6 [699]
 0--1 1
--110 1
-.names RES_GEN OL2 OL1 LatchOut_v8 INT_GEN
-1--1 1
--0-0 1
---00 1
-.names RES_GEN RES_WM OL2 OL1 OL0 LatchOut_v6 LatchOut_v8 INT_WM
---0--1- 1
-----01- 1
-1-----1 1
+011- 1
+.names RES_GEN RES_WM OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 [700]
+1----1- 1
+0----1- 1
+1-11--- 1
+0-11--- 1
+-1-0-0- 1
+--0--01 1
 -10---0 1
--1-00-0 1
-.names RES_GEN RES_DW OL2 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 INT_DW
---0--1- 1
-1-----1 1
--1-11-- 1
+---0001 1
+.names RES_DW OL2 OL1 OL0 LatchOut_v6 LatchOut_v8 [701]
+00---1 1
+0--1-1 1
+01000- 1
+.names RES_GEN RES_DW OL2 OL1 OL0 LatchOut_v6 LatchOut_v8 INT_GEN
+1----1- 1
+1-11--- 1
+-1-0-0- 1
+-10---1 1
+-00---1 1
+-0--1-1 1
+--0--00 1
+----100 1
+-01000- 1
+.names RES_GEN RES_WM OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 INT_WM
+1----1- 1
+1-11--- 1
+-1-0-0- 1
+--0--01 1
 -10---0 1
+---0001 1
+.names RES_GEN RES_DW OL2 OL1 OL0 LatchOut_v6 LatchOut_v8 INT_DW
+1----1- 1
+1-11--- 1
+-1-0-0- 1
+-10---1 1
+--0--00 1
+----100 1
 .exdc 
 .inputs RES_GEN RES_WM RES_DW OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8
-.outputs [12] [13] [14] INT_GEN INT_WM INT_DW
-.names RES_DW OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 [12]
-----1-1 1
------11 1
--11-1-- 1
--101-1- 1
--1-111- 1
-01-010- 1
-11010-0 1
-.names RES_DW OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 [13]
-----1-1 1
------11 1
--11-1-- 1
--101-1- 1
--1-111- 1
-01-010- 1
-11010-0 1
-.names RES_DW OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 [14]
-----1-1 1
------11 1
--11-1-- 1
--101-1- 1
--1-111- 1
-01-010- 1
-11010-0 1
-.names RES_DW OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 INT_GEN
-----1-1 1
------11 1
--11-1-- 1
--101-1- 1
--1-111- 1
-01-010- 1
-11010-0 1
-.names RES_DW OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 INT_WM
-----1-1 1
------11 1
--11-1-- 1
--101-1- 1
--1-111- 1
-01-010- 1
-11010-0 1
-.names RES_DW OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 INT_DW
-----1-1 1
------11 1
--11-1-- 1
--101-1- 1
--1-111- 1
-01-010- 1
-11010-0 1
+.outputs [699] [700] [701] INT_GEN INT_WM INT_DW
+.names RES_GEN RES_WM OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 [699]
+-----10- 1
+-----1-1 1
+--111--1 1
+--11101- 1
+0-111-0- 1
+-0101-00 1
+.names RES_GEN RES_WM OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 [700]
+-----10- 1
+-----1-1 1
+--111--1 1
+--11101- 1
+0-111-0- 1
+-0101-00 1
+.names RES_GEN RES_WM OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 [701]
+-----10- 1
+-----1-1 1
+--111--1 1
+--11101- 1
+0-111-0- 1
+-0101-00 1
+.names RES_GEN RES_WM OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 INT_GEN
+-----10- 1
+-----1-1 1
+--111--1 1
+--11101- 1
+0-111-0- 1
+-0101-00 1
+.names RES_GEN RES_WM OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 INT_WM
+-----10- 1
+-----1-1 1
+--111--1 1
+--11101- 1
+0-111-0- 1
+-0101-00 1
+.names RES_GEN RES_WM OL2 OL1 OL0 LatchOut_v6 LatchOut_v7 LatchOut_v8 INT_DW
+-----10- 1
+-----1-1 1
+--111--1 1
+--11101- 1
+0-111-0- 1
+-0101-00 1
 .end
