@@ -1,6 +1,6 @@
 .model DATAPATH
 .inputs INT_GEN INT_WM INT_DW L9 L8 L7 L6 L5 L4 L3 L2 L1 L0
-.outputs TH1 TH0 OL2 OL1 OL0
+.outputs OL2 OL1 OL0 INT_GENFIN INT_WMFIN INT_DWFIN TH1FIN TH0FIN
 
 # Definizione valori 0 e 1
 .subckt ZERO O=ZERO
@@ -148,20 +148,40 @@
 .subckt MUX2X8 \
 	X2=Agt14 X1=Agt29 X0=Agt44 \
 	a1=ZERO a0=ZERO b1=UNO b0=UNO c1=UNO c0=ZERO d1=UNO d0=UNO e1=ZERO e0=UNO f1=UNO f0=UNO g1=UNO g0=ZERO h1=UNO h0=UNO \
-	o1=TH10 o0=TH00
+	o1=TH1tmp o0=TH0tmp
 
 
 # *** Gestione stato OL ***
 #
-# Controllo INT_GEN (output fascia TH1 TH0)
-.subckt MUX2 A1=ZERO A0=ZERO B1=TH10 B0=TH00 S=INT_GEN O1=TH1 O0=TH0
 # Controllo se OL
-.subckt UGUALE2 A1=UNO A0=UNO B1=TH1 B0=TH0 O=THeq11
+.subckt UGUALE2 A1=UNO A0=UNO B1=TH1tmp B0=TH0tmp O=THeq11
 # Determinazione ciclo in OL
 .subckt AND A=INT_GEN B=THeq11 X=THOLok
-.subckt MUX3 A2=ZERO A1=ZERO A0=ZERO B2=TIMER2PLUS B1=TIMER1PLUS B0=TIMER0PLUS S=THOLok O2=TIMER2 O1=TIMER1 O0=TIMER0
-.subckt REGISTRO3 A2=TIMER2 A1=TIMER1 A0=TIMER0 O2=OL2 O1=OL1 O0=OL0
-.subckt SOMMATORE3 A2=OL2 A1=OL1 A0=OL0 B2=ZERO B1=ZERO B0=UNO O2=TIMER2PLUS O1=TIMER1PLUS O0=TIMER0PLUS CIN=ZERO COUT=COUT
+.subckt MUX3 A2=ZERO A1=ZERO A0=ZERO B2=OL2PLUS B1=OL1PLUS B0=OL0PLUS S=THOLok O2=OL2reg O1=OL1reg O0=OL0reg
+# .subckt MUX3X4 a2=ZERO a1=ZERO a0=ZERO b2=OL2PLUS b1=OL1PLUS b0=OL0PLUS c2=ZERO c1=ZERO c0=ZERO d2=ZERO d1=ZERO d0=ZERO X1=OL7tmp X0=THOLok o2=OL2reg o1=OL1reg o0=OL0reg
+.subckt REGISTRO3 A2=OL2reg A1=OL1reg A0=OL0reg O2=OL2 O1=OL1 O0=OL0
+.subckt SOMMATORE3 A2=OL2 A1=OL1 A0=OL0 B2=ZERO B1=ZERO B0=UNO O2=OL2PLUS O1=OL1PLUS O0=OL0PLUS CIN=ZERO COUT=COUT
+
+.subckt UGUALE3 A2=OL2 A1=OL1 A0=OL0 B2=ZERO B1=UNO B0=UNO O=OL4tmp
+.subckt UGUALE3 A2=OL2 A1=OL1 A0=OL0 B2=UNO B1=ZERO B0=ZERO O=OL5tmp
+.subckt UGUALE3 A2=OL2 A1=OL1 A0=OL0 B2=UNO B1=ZERO B0=UNO O=OL6tmp
+# .subckt UGUALE3 A2=OL2 A1=OL1 A0=OL0 B2=UNO B1=UNO B0=ZERO O=OL7tmp
+
+# Controllo se attualmente siamo in OL4 OL5 o OL6
+.subckt AND A=OL4tmp B=THeq11 X=OL4
+.subckt AND A=OL5tmp B=THeq11 X=OL5
+.subckt AND A=OL6tmp B=THeq11 X=OL6
+# .subckt AND A=OL7tmp B=THeq11 X=OL7
+
+# Scelgo gli INT corretti in base al ciclo di OL
+.subckt MUX S=OL4 A=INT_DW B=ZERO O=INT_DWFIN
+.subckt MUX S=OL5 A=INT_WM B=ZERO O=INT_WMFIN
+.subckt MUX S=OL6 A=INT_GEN B=ZERO O=INT_GENFIN
+
+# Correggo la fascia attuale reale in base a INT_GENFIN
+.subckt MUX2 S=INT_GENFIN A1=ZERO A0=ZERO B1=TH1tmp B0=TH0tmp O1=TH1FIN O0=TH0FIN
+
+.end
 
 .search gt3.blif
 .search mux2.blif
@@ -176,4 +196,9 @@
 .search mux8.blif
 .search uno.blif
 .search zero.blif
-
+.search mux4.blif
+.search uguale3.blif
+.search nand.blif
+.search mux1x8.blif
+.search mux3x4.blif
+.search mux.blif

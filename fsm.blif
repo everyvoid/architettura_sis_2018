@@ -5,7 +5,7 @@
 .start_kiss
 .i 6
 .o 3
-.p 21
+.p 37
 .s 5
 .r OFF
 
@@ -17,55 +17,77 @@
 
 # OK -> OK
 ---0-- OK OK 111
+--1100 OK OK 111
+-1-101 OK OK 111
+1--110 OK OK 111
 
 # OK -> DW
----100 OK DW 110
+--0100 OK DW 110
+
+# OK -> WM
+-0-101 OK WM 101
+
+# OK -> OFF
+0--110 OK OFF 000
 
 # DW -> DW
 --00-- DW DW 110
---1100 DW DW 110
-
-# DW -> DW_WM
---0101 DW DW_WM 100
-
-# DW_WM -> DW_WM
--0-100 DW_WM DW_WM 100
--000-- DW_WM DW_WM 100
---0101 DW_WM DW_WM 100
-
-# DW_WM -> DW
--100-- DW_WM DW 110
--1-100 DW_WM DW 110
+--0100 DW DW 110
+-10101 DW DW 110
 
 # DW -> WM
---1101 DW WM 101
+-01101 DW WM 101
 
-# WM -> WM
--0-0-- WM WM 101
-
-# WM -> DW
--1-100 WM DW 110
-
-# DW_WM -> OFF
----11- DW_WM OFF 000
-
-# WM -> OFF
----11- WM OFF 000
+# DW -> DW_WM
+-00101 DW DW_WM 100
 
 # DW -> OK
 --10-- DW OK 111
+--1100 DW OK 111
+-11101 DW OK 111
+1--110 DW OK 111
 
-# DW_WM -> OK
--110-- DW_WM OK 111
+# DW -> OFF
+0--110 DW OFF 000
+
+# WM -> WM
+-0-0-- WM WM 101
+-01100 WM WM 101
+
+# WM -> DW
+-10100 WM DW 110
+
+# WM -> DW_WM
+-00100 WM DW_WM 100
 
 # WM -> OK
 -1-0-- WM OK 111
+-1-101 WM OK 111
+-11100 WM OK 111
+1--11- WM OK 111
 
-# WM -> DW_WM
--0-100 WM DW_WM 100
+# WM -> OFF
+0--110 WM OFF 000
+
+# DW_WM -> DW_WM
+-0010- DW_WM DW_WM 100
+-000-- DW_WM DW_WM 100
+
+# DW_WM -> DW
+-100-- DW_WM DW 110
+-1010- DW_WM DW 110
 
 # DW_WM -> WM
 -010-- DW_WM WM 101
+-0110- DW_WM WM 101
+
+# DW_WM -> OFF
+0--110 DW_WM OFF 000
+
+# DW_WM -> OK
+-110-- DW_WM OK 111
+-1110- DW_WM OK 111
+1--110 DW_WM OK 111
 
 .end_kiss
 .end 
