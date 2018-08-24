@@ -5,7 +5,7 @@
 .start_kiss
 .i 6
 .o 3
-.p 37
+.p 38
 .s 5
 .r OFF
 
@@ -64,7 +64,7 @@
 -1-0-- WM OK 111
 -1-101 WM OK 111
 -11100 WM OK 111
-1--11- WM OK 111
+1--110 WM OK 111
 
 # WM -> OFF
 0--110 WM OFF 000

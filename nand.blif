@@ -1,6 +1,0 @@
-.model NAND
-.inputs A B
-.outputs X
-.names A B X
-11 0
-.end
