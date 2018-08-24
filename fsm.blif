@@ -19,7 +19,7 @@
 ---0-- OK OK 111
 
 # OK -> DW
----1-- OK DW 110
+---100 OK DW 110
 
 # DW -> DW
 --00-- DW DW 110
@@ -42,6 +42,9 @@
 
 # WM -> WM
 -0-0-- WM WM 101
+
+# WM -> DW
+-1-100 WM DW 110
 
 # DW_WM -> OFF
 ---110 DW_WM OFF 000
