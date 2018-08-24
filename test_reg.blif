@@ -1,0 +1,16 @@
+.model REG
+.inputs THOLok
+.outputs OL2 OL1 OL0
+
+.subckt ZERO O=ZERO
+.subckt UNO O=UNO
+
+.subckt MUX3 A2=ZERO A1=ZERO A0=ZERO B2=OL2PLUS B1=OL1PLUS B0=OL0PLUS S=THOLok O2=OL2reg O1=OL1reg O0=OL0reg
+.subckt REGISTRO3 A2=OL2reg A1=OL1reg A0=OL0reg O2=OL2 O1=OL1 O0=OL0                                                    # OL_OLD
+.subckt SOMMATORE3 A2=OL2 A1=OL1 A0=OL0 B2=ZERO B1=ZERO B0=UNO O2=OL2PLUS O1=OL1PLUS O0=OL0PLUS CIN=ZERO COUT=COUT      # OL_NEW
+.end
+.search uno.blif
+.search zero.blif
+.search sommatore3.blif
+.search registro3.blif
+.search mux3.blif

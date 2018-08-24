@@ -1,0 +1,17 @@
+.model FSM
+.inputs OL2 OL1 OL0
+.outputs O1 O0
+
+.start_kiss
+.i 3
+.o 2
+.p 4
+.s 3
+.r OFF
+
+000 OFF OFF 00
+001 OFF OK1 01
+010 OK1 OK2 10
+100 OK2 OFF 11
+.end_kiss
+.end
