@@ -47,10 +47,10 @@
 -1-100 WM DW 110
 
 # DW_WM -> OFF
----110 DW_WM OFF 000
+---11- DW_WM OFF 000
 
 # WM -> OFF
----110 WM OFF 000
+---11- WM OFF 000
 
 # DW -> OK
 --10-- DW OK 111
