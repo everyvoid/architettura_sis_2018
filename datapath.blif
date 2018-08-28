@@ -148,9 +148,7 @@
 .subckt MUX2X8 \
 	X2=Agt14 X1=Agt29 X0=Agt44 \
 	a1=ZERO a0=ZERO b1=UNO b0=UNO c1=UNO c0=ZERO d1=UNO d0=UNO e1=ZERO e0=UNO f1=UNO f0=UNO g1=UNO g0=ZERO h1=UNO h0=UNO \
-	o1=TH1tmp1 o0=TH0tmp1
-
-.subckt MUX2 S=INT_GEN A1=ZERO A0=ZERO B1=TH1tmp1 B0=TH0tmp1 O1=TH1tmp O0=TH0tmp
+	o1=TH1tmp o0=TH0tmp
 
 
 # *** Gestione stato OL ***
